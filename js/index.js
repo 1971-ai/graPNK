@@ -1,14 +1,14 @@
 "use strict";
 
-var rockBtn = document.getElementById('rock-button');
-var paperBtn = document.getElementById('paper-button');
-var scissorsBtn = document.getElementById('scissors-button');
+
 var output = document.getElementById('output');
 var playerPointsEl = document.getElementById('player-points');
 var computerPointsEl = document.getElementById('computer-points');
-var playerPoints = 0;
-var computerPoints = 0;
 
+var params = {
+  playerPoints: 0,
+  computerPoints: 0,
+}
 function getComputerChoice() {
   var choice = ['rock', 'paper', 'scissors'];
   var randomIndex = Math.floor(Math.random() * choice.length);
@@ -21,27 +21,26 @@ function checkWinner(playerChoice, computerChoice) {
   if (playerChoice === 'paper' && computerChoice === 'scissors' || playerChoice === 'rock' && computerChoice === 'paper' || playerChoice === 'scissors' && computerChoice === 'rock')
     {
 winner = 'computer win';
-      computerPoints++;
+      params.computerPoints++;
     } else if (playerChoice === computerChoice) {
       winner = 'Draw';
     } else { 
-    playerPoints++;
+    params.playerPoints++;
     }
   output.innerHTML = 'Result:' + winner + '<br>' + output.innerHTML;
   updatePoints();
 }
 
 function updatePoints() {
-  playerPointsEl.innerText = playerPoints;
-  computerPointsEl.innerText = computerPoints;
+  playerPointsEl.innerText = params.playerPoints;
+  computerPointsEl.innerText = params.computerPoints;
 }
 
-rockBtn.addEventListener('click', function() {
-  checkWinner('rock', getComputerChoice());
-});
-paperBtn.addEventListener('click', function() {
-  checkWinner('paper', getComputerChoice());
-});
-scissorsBtn.addEventListener('click', function() {
-  checkWinner('scissors', getComputerChoice());
-});
+
+
+var buttons = documnet.querySelectorAll('.player-move');
+for(var i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('click', function() {
+    checkWinner(buttons[i].getAttribute('data-move'), getComputerChoice());
+  });
+}
