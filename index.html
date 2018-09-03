@@ -6,13 +6,14 @@
   <title>A Pen by  1971-ai</title>
   
   
-  
+      
       <link rel="stylesheet" href="css/style.css">
 
   
 </head>
 
 <body>
+  <button id="new-game">New Game</button>
 
   <div class="score-board">
   <div id="player-label" class="badge">player</div>
@@ -29,11 +30,29 @@
   <button data-move="scissors" class="player-move" id="scissors-button">Scissors</button>
 </div>
 <div id="output"></div>
+<div class="overlay" id="modal-overlay">
+  <div class="modal" id="modal">
+    <a href="#" class="close">x</a>
+    <header>Modal one</header>
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <td>Gracz</td>
+            <td>Komputer</td>
+            <td>Wynik</td>
+          </tr>
+        </thead>
+        <tbody class="table-results">
+          
+        </tbody>
+      </table>
+    </div>
   
   
 
     <script  src="js/index.js"></script>
-
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
 
 
