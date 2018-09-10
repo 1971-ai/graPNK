@@ -20,6 +20,10 @@
     table.innerHTML = '';
    params.rounds = +prompt("ile chcesz rozegrać rund");
   }); 
+  var buttons = document.querySelectorAll('.player-move');
+      for (var i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = false;
+    }
   function getComputerChoice() {
     var choice = ['rock', 'paper', 'scissors'];
     var randomIndex = Math.floor(Math.random() * choice.length);
@@ -54,6 +58,10 @@
         table.innerHTML += '<tr><td>'+params.progress[i].player+'</td><td>'+params.progress[i].computer+'</td><td>'+params.progress[i].winner+'</td></tr>';
       }
       showModal();
+      var buttons = document.querySelectorAll('.player-move');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+      }
     }
   }
 
